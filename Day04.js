@@ -1,24 +1,87 @@
 // -----------------EXTRA EXERCISE-----------------
-let buah = ["Apple", "Orange", "Banana"]
-let harga = [5000, 6500, 4500]
-let stok = [5, 6, 10]
+let buah = ["Apple", "Orange", "Banana"];
+let harga = [5000, 6500, 4500];
+let stok = [5, 6, 10];
 
 let length = buah.length;
 
 let result = "";
 for (let i = 0; i < length; i++) {
     if (i == length - 1) {
-        result+= `${i+1}. Buah ${buah[i]} dengan harga ${harga[i]}, stok: ${stok[i]}` 
+        result += `${i + 1}. Buah ${buah[i]} dengan harga ${harga[i]}, stok: ${stok[i]}`
     } else {
-        result += `${i+1}. Buah ${buah[i]} dengan harga ${harga[i]}, stok: ${stok[i]} \n` 
+        result += `${i + 1}. Buah ${buah[i]} dengan harga ${harga[i]}, stok: ${stok[i]} \n`
     }
 }
 
-console.log(result)
+console.log(result);
 
 
+// -----------EXTRA EXERCISE 2-----------
+// INPUT
+let dataToko = [
+    ["Jaket", 2, 3000], 
+    ["Topi", 11, 5600], 
+    ["Baju", 9, 6600]
+];
 
-// -----------exercise example 1-----------
+// PROCESS
+result = "";
+for (index in dataToko) {
+    // code bawah untuk menambah kalimat awal
+    result += `${dataToko[index][0]} stoknya ${dataToko[index][1]} dengan harga ${dataToko[index][2]}.`;
+
+    if (dataToko[index][1] < 10) { // menambahkan kalimat conditional untuk stock
+        result += " Stock akan habis.";
+    } else {
+        result += " Stock cukup.";
+    }
+
+    if (index < 2) { // menambahkan baris baru kecuali di loop terakhir
+        result += "\n";
+    }
+}
+
+// OUTPUT
+console.log(result);
+
+
+// -----------EXTRA EXERCISE 3-----------
+let dataTokoBaju = [
+    ["Jaket", 2, 3000], 
+    ["Topi", 11, 5600], 
+    ["Baju", 9, 6600]
+];
+
+let dataTokoMobil = [
+    ["Brio", 13, 30000], 
+    ["Pajero", 21, 75000], 
+    ["Xenia", 8, 78000]
+];
+
+function printData(namaToko) {
+    let result = ""
+    for (item in namaToko) {
+        result += `${namaToko[item][0]} stoknya ${namaToko[item][1]} dengan harga ${namaToko[item][2]}.`;
+
+        if (namaToko[item][1] < 10) {
+            result += " Stock akan habis.";
+        } else {
+            result += " Stock cukup.";
+        }
+
+        if (item < 2) { 
+            result += "\n";
+        }
+    }
+    return result;
+}
+
+console.log(printData(dataTokoBaju))
+console.log(printData(dataTokoMobil))
+
+
+// -----------EXERCISE EXAMPLE 1-----------
 function triangle1(size) {
     if (size < 1) {
         return "Error, the size cant be lower than 1."; // bug catching jika size kurang dari 1
@@ -29,7 +92,7 @@ function triangle1(size) {
     for (let i = 1; i <= size; i++) {
 
         if (i > 1) { // ada if karena mulai dari baris kedua
-    
+
             for (let a = 1; a < i; a++) { // for loop buat nambah angka di depan2
                 triangle1Result += + a + " "
             }
@@ -42,9 +105,9 @@ function triangle1(size) {
 }
 
 let x = triangle1(5)
-// console.log(x)
+console.log(x)
 
-// -----------exercise example 2-----------
+// -----------------EXERCISE EXAMPLE 2-----------------
 let inputArray = [1, 3, 4, 17, 45, 22, 91, 77, 23, 91];
 
 let highestNum = 0;
@@ -56,10 +119,14 @@ for (let number of inputArray) {
     }
 }
 
-// console.log(highestNum);
+console.log(highestNum);
 
-// -----------exercise 1-----------
+// -----------------EXERCISE 1-----------------
 function triangle2(size) {
+    if (size < 1) {
+        return "Error, the size cant be lower than 1."; // bug catching jika size kurang dari 1
+    }
+
     let totalNum = 0
     let triangle2Array = [];
     let triangle2Result = "";
@@ -77,18 +144,17 @@ function triangle2(size) {
     }
 
     for (let i = 0; i < size; i++) { // looping untuk memanggil angka2 yang dari array
-        let b = 0;
         for (let a = 0; a <= i; a++) {
-            triangle2Result += " "+ triangle2Array.shift()
+            triangle2Result += " " + triangle2Array.shift()
         }
         triangle2Result += "\n"
     }
     return triangle2Result
 }
 
-// console.log(triangle2(5))
+console.log(triangle2(5))
 
-// -----------exercise 2-----------
+// -----------------EXERCISE 2-----------------
 function fizzBuzz(number) {
     let result = "";
     for (let i = 1; i <= number; i++) {
@@ -105,7 +171,7 @@ function fizzBuzz(number) {
     return result;
 }
 
-// console.log(fizzBuzz(51))
+console.log(fizzBuzz(51))
 
 // ---------------EXERCISE 3---------------
 // formula weight in kg / (height in meter) ** 2
@@ -116,43 +182,41 @@ function calculateBMI(weight, height) {
         maximumFractionDigits: 1
     });
     var bmiResult = "";
-    
+
     if (bmiNum > 39.9) {
         bmiResult = "Obesity"
-    } else if(bmiNum >= 30.0) {
+    } else if (bmiNum >= 30.0) {
         bmiResult = "Very overweight"
-    } else if(bmiNum >= 25.0) {
+    } else if (bmiNum >= 25.0) {
         bmiResult = "Overweight"
-    } else if(bmiNum >= 18.5) {
+    } else if (bmiNum >= 18.5) {
         bmiResult = "Ideal"
     } else {
         bmiResult = "Less weight"
     }
 
-    console.log(bmiNum);
-    console.log(bmiResult);
     return bmiResult;
 }
 
 console.log(calculateBMI(111, 1.67));
 
-// Exercise 4
-Array1 = [1,2,3,4,5,6,7,8,9,10,13,16,17,28,31];
+// -----------------EXERCISE 4-----------------
+Array1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 13, 16, 17, 28, 31];
 
 function removeOdd(inputArray) {
     for (number in inputArray) {
-        if (inputArray[number] % 2 != 0){
+        if (inputArray[number] % 2 != 0) {
             inputArray.splice(number, 1);
         }
     }
     return inputArray;
 }
 
-x = removeOdd(Array1);
-console.log(x);
+removeOdd(Array1);
+console.log(removeOdd(Array1));
 
-// exercise 5
-let stringTest1 = "Testing Hello World myn name is Hans";
+// -----------------EXERCISE 5-----------------
+let stringTest1 = "Testing Hello world myname is Hans";
 function splitString(inputString) {
     let newArray = inputString.split(" ");
     return newArray;
